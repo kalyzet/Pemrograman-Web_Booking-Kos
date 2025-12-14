@@ -6,25 +6,46 @@
     </div>
     <div id="TopNav" class="relative flex items-center justify-between px-5 mt-[60px]">
         <div class="flex flex-col items-start gap-1">
-            <a href="{{ route('home') }}"
-                class="w-12 h-12 flex items-center justify-center shrink-0 rounded-full overflow-hidden mb-1">
-                <img src="assets/images/icons/mhy.png" class="w-[68px] h-[68px]" alt="icon">
-            </a>
+            <button type="button" onclick="showNotification()"
+                class="w-12 h-12 flex items-center justify-center rounded-full overflow-hidden">
+                <img src="{{ asset('assets/images/icons/mhy.png') }}" class="w-[68px] h-[68px]" alt="icon">
+            </button>
             <div>
-                <p>Hari yang cerah,</p>
-                <h1 class="font-bold text-xl leading-[30px]">Untuk Menjelajahi Kos Termurah</h1>
+                <p>Hari yang Cerah,</p>
+                <h1 class="font-bold text-xl leading-[30px]">
+                    Untuk Menjelajahi Kos Termurah
+                </h1>
             </div>
+        </div>
+
+        <div class="flex flex-col items-end gap-2">
+            @if ($weather)
+                <div class="w-max">
+                    <p class="text-[11px] text-gray-500 text-right mb-1">
+                        Cuaca Hari Ini di {{ $weather['city'] }}
+                    </p>
+                    <div class="flex items-center gap-2 px-3 py-2 rounded-xl bg-white/80 backdrop-blur shadow-md">
+                        <img src="https://openweathermap.org/img/wn/{{ $weather['icon'] }}@2x.png" class="w-8 h-8"
+                            alt="weather">
+                        <div class="leading-tight">
+                            <p class="font-semibold text-sm">{{ $weather['temp'] }}°C</p>
+                            <p class="text-[11px] text-gray-500 capitalize">
+                                {{ ucwords($weather['description']) }}
+                            </p>
+                        </div>
+                    </div>
+                </div>
+            @endif
         </div>
 
         <div id="notificationPopup" class="notification-popup">
             Selamat Datang!
         </div>
-        <button type="button"
-            class="w-12 h-12 flex items-center justify-center shrink-0 rounded-full overflow-hidden bg-white"
-            onclick="showNotification()">
-            <img src="assets/images/icons/notification.svg" class="w-[28px] h-[28px]" alt="icon">
-        </button>
+
     </div>
+
+
+
     <div id="Categories" class="swiper w-full overflow-x-hidden mt-[30px]">
         <div class="swiper-wrapper">
             @foreach ($categories as $category)
@@ -184,18 +205,14 @@
 
 @section('scripts')
     <script>
-        // 4. JavaScript untuk Menampilkan dan Menyembunyikan Otomatis
         function showNotification() {
             const popup = document.getElementById('notificationPopup');
 
-            // Tampilkan popup
             popup.classList.add('show');
 
-            // Atur timer untuk menyembunyikan popup setelah 2000 milidetik (2 detik)
             setTimeout(function() {
-                // Sembunyikan popup
                 popup.classList.remove('show');
-            }, 2000); // 2000ms = 2 detik
+            }, 2000);
         }
     </script>
 @endsection

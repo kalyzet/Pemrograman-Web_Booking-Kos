@@ -41,4 +41,10 @@ return [
         'whatsapp_from' => env('TWILIO_WHATSAPP_FROM'),
     ],
 
+    'weather' => [
+        'key' => env('WEATHER_API_KEY'),
+        'city' => env('WEATHER_CITY', 'Banjarmasin'),
+    ],
+
+
 ];
