@@ -17,7 +17,6 @@
                 </h1>
             </div>
         </div>
-
         <div class="flex flex-col items-end gap-2">
             @if ($weather)
                 <div class="w-max">
@@ -37,14 +36,10 @@
                 </div>
             @endif
         </div>
-
         <div id="notificationPopup" class="notification-popup">
             Selamat Datang!
         </div>
-
     </div>
-
-
 
     <div id="Categories" class="swiper w-full overflow-x-hidden mt-[30px]">
         <div class="swiper-wrapper">
@@ -214,5 +209,15 @@
                 popup.classList.remove('show');
             }, 2000);
         }
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function(e) {
+                e.preventDefault();
+                const target = document.querySelector(this.getAttribute('href'));
+                target.scrollIntoView({
+                    behavior: 'smooth',
+                    block: 'start'
+                });
+            });
+        });
     </script>
 @endsection
