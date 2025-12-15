@@ -13,7 +13,7 @@
                 <img src="assets/images/icons/search-status.svg" class="w-8 h-8 flex shrink-0" alt="icon">
                 <span class="font-semibold text-sm text-white">Pencarian</span>
             </a>
-            <a href="#" class="flex flex-col items-center text-center gap-2">
+            <a href="{{ route('help-costumer') }}" class="flex flex-col items-center text-center gap-2">
                 <img src="assets/images/icons/24-support.svg" class="w-8 h-8 flex shrink-0" alt="icon">
                 <span class="font-semibold text-sm text-white">Bantuan</span>
             </a>

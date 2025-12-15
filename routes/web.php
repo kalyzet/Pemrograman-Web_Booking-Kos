@@ -6,7 +6,9 @@ use App\Http\Controllers\CategoryController;
 use App\Http\Controllers\CityController;
 use App\Http\Controllers\HomeController;
 use App\Http\Controllers\TwilioController;
+use App\Http\Controllers\HelpController;
 use Illuminate\Support\Facades\Route;
+
 
 Route::get('/', [HomeController::class, 'index'])->name('home');
 
@@ -32,3 +34,6 @@ Route::get('/check-booking', [BookingController::class, 'check'])->name('check-b
 Route::post('/check-booking', [BookingController::class, 'show'])->name('check-booking.show');
 
 Route::get('/send-wa', [TwilioController::class, 'sendTest'])->name('twilio.test');
+
+Route::get('/help', [HelpController::class, 'index'])->name('help-costumer');
+Route::post('/help/send', [HelpController::class, 'send'])->name('help-send');
