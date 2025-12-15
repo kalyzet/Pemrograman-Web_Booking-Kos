@@ -7,6 +7,13 @@
 
     <div class="relative flex flex-col gap-[30px] my-[60px] px-5 max-w-2xl mx-auto">
 
+        @if (session('success'))
+            <div class="notification-popup show" style="background: linear-gradient(to right,#4CAF50,#2196FA);">
+                {{ session('success') }}
+            </div>
+        @endif
+
+
         <h1 class="font-bold text-[30px] leading-[45px] text-center">Pusat Bantuan</h1>
 
         <form action="{{ route('help-send') }}" method="POST" enctype="multipart/form-data"

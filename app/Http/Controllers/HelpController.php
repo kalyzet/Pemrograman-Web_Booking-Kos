@@ -18,15 +18,21 @@ class HelpController extends Controller
         $request->validate([
             'subject' => 'required|string|max:255',
             'message' => 'required|string',
-            'file' => 'nullable|file|max:2048', // max 2MB
+            'file' => 'nullable|file|max:2048',
         ]);
 
-        $subject = $request->input('subject');
-        $messageText = $request->input('message');
-        $file = $request->file('file');
+        $fileName = null;
 
-        Mail::to('kalticode@gmail.com')->send(new HelpMessage($subject, $messageText, $file));
+        if ($request->hasFile('file')) {
+            $fileName = $request->file('file')->store('help-files', 'public');
+        }
 
-        return back()->with('success', 'Pesan berhasil dikirim!');
+        Mail::to('kalticode@gmail.com')->send(new HelpMessage(
+            $request->subject,
+            $request->message,
+            $fileName
+        ));
+
+        return redirect()->back()->with('success', 'Pesan berhasil dikirim!');
     }
 }

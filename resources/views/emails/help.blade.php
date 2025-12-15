@@ -1,6 +1,6 @@
-<h2>Pesan dari Help Center</h2>
+<h2>Pesan Bantuan</h2>
 
-<p><strong>Subjek:</strong> {{ $subject }}</p>
+<p><strong>Subjek:</strong> {{ $subjectText }}</p>
 <p><strong>Pesan:</strong></p>
 <p>{{ $messageText }}</p>
 

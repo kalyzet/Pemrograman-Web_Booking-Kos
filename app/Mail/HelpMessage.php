@@ -4,10 +4,7 @@ namespace App\Mail;
 
 use Illuminate\Bus\Queueable;
 use Illuminate\Mail\Mailable;
-use Illuminate\Mail\Mailables\Content;
-use Illuminate\Mail\Mailables\Envelope;
 use Illuminate\Queue\SerializesModels;
-use Illuminate\Mail\Mailables\Attachment;
 
 class HelpMessage extends Mailable
 {
@@ -15,36 +12,24 @@ class HelpMessage extends Mailable
 
     public $subjectText;
     public $messageText;
-    public $file;
+    public $fileName;
 
-    public function __construct($subjectText, $messageText, $file = null)
+    public function __construct($subjectText, $messageText, $fileName = null)
     {
         $this->subjectText = $subjectText;
         $this->messageText = $messageText;
-        $this->file = $file;
+        $this->fileName = $fileName;
     }
 
-    public function envelope(): Envelope
+    public function build()
     {
-        return new Envelope(
-            subject: $this->subjectText,
-        );
-    }
+        $email = $this->subject($this->subjectText)
+            ->view('emails.help');
 
-    public function content(): Content
-    {
-        return new Content(
-            view: 'emails.help',
-            with: [
-                'subject' => $this->subjectText,
-                'messageText' => $this->messageText,
-                'fileName' => $this->file?->getClientOriginalName(),
-            ]
-        );
-    }
+        if ($this->fileName) {
+            $email->attach(storage_path('app/public/' . $this->fileName));
+        }
 
-    public function attachments(): array
-    {
-        return $this->file ? [Attachment::fromPath($this->file->getRealPath())->as($this->file->getClientOriginalName())] : [];
+        return $email;
     }
 }
