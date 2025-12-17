@@ -17,6 +17,10 @@ use Illuminate\Foundation\Http\Middleware\VerifyCsrfToken;
 use Illuminate\Routing\Middleware\SubstituteBindings;
 use Illuminate\Session\Middleware\StartSession;
 use Illuminate\View\Middleware\ShareErrorsFromSession;
+use App\Filament\Widgets\BookingStatistic;
+// use App\Filament\Widgets\BoardingHouseStatistic;
+use App\Filament\Widgets\BoardingHouseByCity;
+use App\Filament\Widgets\BoardingHouseByCategory;
 
 class AdminPanelProvider extends PanelProvider
 {
@@ -39,7 +43,12 @@ class AdminPanelProvider extends PanelProvider
             ->widgets([
                 Widgets\AccountWidget::class,
                 Widgets\FilamentInfoWidget::class,
+                BookingStatistic::class,
+                BoardingHouseByCity::class,
+                BoardingHouseByCategory::class,
             ])
+
+
             ->middleware([
                 EncryptCookies::class,
                 AddQueuedCookiesToResponse::class,
