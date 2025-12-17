@@ -27,19 +27,19 @@ class CityResource extends Resource
         return $form
             ->schema([
                 Forms\Components\FileUpload::make('image')
-                ->image()
-                ->directory('cities')
-                ->required()
-                ->columnSpan(2),
+                    ->image()
+                    ->directory('cities')
+                    ->required()
+                    ->columnSpan(2),
                 Forms\Components\TextInput::make('name')
-                ->required()
-                ->debounce(500)
-                ->reactive()
-                ->afterStateUpdated(function ($state, callable $set) {
-                    $set('slug', Str::slug($state));
-                }),
+                    ->required()
+                    ->debounce(500)
+                    ->reactive()
+                    ->afterStateUpdated(function ($state, callable $set) {
+                        $set('slug', Str::slug($state));
+                    }),
                 Forms\Components\TextInput::make('slug')
-                ->required(),
+                    ->required(),
             ]);
     }
 
@@ -48,7 +48,8 @@ class CityResource extends Resource
         return $table
             ->columns([
                 Tables\Columns\ImageColumn::make('image'),
-                Tables\Columns\TextColumn::make('name'),
+                Tables\Columns\TextColumn::make('name')
+                    ->searchable(),
                 Tables\Columns\TextColumn::make('slug'),
             ])
             ->filters([
