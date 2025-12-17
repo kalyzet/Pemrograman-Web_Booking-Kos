@@ -31,8 +31,12 @@ class AdminPanelProvider extends PanelProvider
             ->id('admin')
             ->path('admin')
             ->login()
+            ->brandName('Booking Kos')
+            // ->brandLogo(asset('assets/images/icons/mhy.png'))
+            // ->brandLogoHeight('32px')
+            ->viteTheme('resources/css/filament/admin/theme.css')
             ->colors([
-                'primary' => Color::Amber,
+                'primary' => Color::Sky,
             ])
             ->discoverResources(in: app_path('Filament/Resources'), for: 'App\\Filament\\Resources')
             ->discoverPages(in: app_path('Filament/Pages'), for: 'App\\Filament\\Pages')

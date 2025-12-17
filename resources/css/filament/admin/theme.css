@@ -1,0 +1,36 @@
+@import "../../../../vendor/filament/filament/resources/css/theme.css";
+
+@config 'tailwind.config.js';
+
+.fi-main,
+.fi-page,
+.fi-resource-page,
+.fi-dashboard-page {
+    background: linear-gradient(
+        90deg,
+        #fdf6e3 0%,
+        #fef9ec 40%,
+        #e0f2fe 75%,
+        #bae6fd 100%
+    );
+}
+
+.fi-brand-name {
+    font-weight: 700;
+    letter-spacing: 0.4px;
+}
+
+.fi-brand {
+    gap: 0.5rem;
+    align-items: center;
+    position: relative;
+}
+
+.fi-brand::after {
+    content: "Booking Kos";
+    position: absolute;
+    left: 42px;
+    font-size: 0.875rem;
+    font-weight: 600;
+    white-space: nowrap;
+}
