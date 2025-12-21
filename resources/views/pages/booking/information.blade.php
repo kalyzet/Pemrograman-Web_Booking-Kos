@@ -6,30 +6,30 @@
     </div>
     <div id="TopNav" class="relative flex items-center justify-between px-5 mt-[60px]">
         <a href="{{ route('kos.rooms', $boardingHouse->slug) }}"
-            class="w-12 h-12 flex items-center justify-center shrink-0 rounded-full overflow-hidden bg-white">
+            class="flex items-center justify-center w-12 h-12 overflow-hidden bg-white rounded-full shrink-0">
             <img src="{{ asset('assets/images/icons/arrow-left.svg') }}" class="w-[28px] h-[28px]" alt="icon">
         </a>
-        <p class="font-semibold">Customer Information</p>
-        <div class="dummy-btn w-12"></div>
+        <p class="font-semibold">Informasi Pelanggan</p>
+        <div class="w-12 dummy-btn"></div>
     </div>
     <div id="Header" class="relative flex items-center justify-between gap-2 px-5 mt-[18px]">
         <div class="flex flex-col w-full rounded-[30px] border border-[#F1F2F6] p-4 gap-4 bg-white">
             <div class="flex gap-4">
                 <div class="flex w-[120px] h-[132px] shrink-0 rounded-[30px] bg-[#D9D9D9] overflow-hidden">
-                    <img src="{{ asset('storage/' . $boardingHouse->thumbnail) }}" class="w-full h-full object-cover"
+                    <img src="{{ asset('storage/' . $boardingHouse->thumbnail) }}" class="object-cover w-full h-full"
                         alt="icon">
                 </div>
-                <div class="flex flex-col gap-3 w-full">
+                <div class="flex flex-col w-full gap-3">
                     <p class="font-semibold text-lg leading-[27px] line-clamp-2 min-h-[54px]">
                         {{ $boardingHouse->name }}</p>
                     <hr class="border-[#F1F2F6]">
                     <div class="flex items-center gap-[6px]">
-                        <img src="{{ asset('assets/images/icons/location.svg') }}" class="w-5 h-5 flex shrink-0"
+                        <img src="{{ asset('assets/images/icons/location.svg') }}" class="flex w-5 h-5 shrink-0"
                             alt="icon">
                         <p class="text-sm text-ngekos-grey">Wilayah {{ $boardingHouse->city->name }}</p>
                     </div>
                     <div class="flex items-center gap-[6px]">
-                        <img src="{{ asset('assets/images/icons/profile-2user.svg') }}" class="w-5 h-5 flex shrink-0"
+                        <img src="{{ asset('assets/images/icons/profile-2user.svg') }}" class="flex w-5 h-5 shrink-0"
                             alt="icon">
                         <p class="text-sm text-ngekos-grey">Di {{ $boardingHouse->category->name }}</p>
                     </div>
@@ -39,26 +39,26 @@
             <div class="flex gap-4">
                 <div class="flex w-[120px] h-[156px] shrink-0 rounded-[30px] bg-[#D9D9D9] overflow-hidden">
                     @foreach ($room->roomImages as $img)
-                        <img src="{{ asset('storage/' . $img->image) }}" class="w-full h-full object-cover" alt="icon">
+                        <img src="{{ asset('storage/' . $img->image) }}" class="object-cover w-full h-full" alt="icon">
                     @endforeach
                 </div>
-                <div class="flex flex-col gap-3 w-full">
+                <div class="flex flex-col w-full gap-3">
                     <p class="font-semibold text-lg leading-[27px]">{{ $room->name }}</p>
                     <hr class="border-[#F1F2F6]">
                     <div class="flex items-center gap-[6px]">
-                        <img src="{{ asset('assets/images/icons/profile-2user.svg') }}" class="w-5 h-5 flex shrink-0"
+                        <img src="{{ asset('assets/images/icons/profile-2user.svg') }}" class="flex w-5 h-5 shrink-0"
                             alt="icon">
                         <p class="text-sm text-ngekos-grey">{{ $room->capacity }} Orang</p>
                     </div>
                     <div class="flex items-center gap-[6px]">
-                        <img src="{{ asset('assets/images/icons/3dcube.svg') }}" class="w-5 h-5 flex shrink-0"
+                        <img src="{{ asset('assets/images/icons/3dcube.svg') }}" class="flex w-5 h-5 shrink-0"
                             alt="icon">
                         <p class="text-sm text-ngekos-grey">{{ $room->square_feet }} Kaki Persegi</p>
                     </div>
                     <hr class="border-[#F1F2F6]">
-                    <p class="font-semibold text-lg" style="color: rgb(49, 222, 241);">Rp
+                    <p class="text-lg font-semibold" style="color: rgb(49, 222, 241);">Rp
                         {{ number_format($boardingHouse->price, 0, ',', '.') }}<span
-                            class="text-sm text-ngekos-grey font-normal">/bulan</span></p>
+                            class="text-sm font-normal text-ngekos-grey">/bulan</span></p>
                 </div>
             </div>
         </div>
@@ -67,18 +67,18 @@
         class="relative flex flex-col gap-6 mt-5 pt-5 bg-[#F5F6F8]" method="POST">
         @csrf
         <div class="flex flex-col gap-[6px] px-5">
-            <h1 class="font-semibold text-lg">Your Informations</h1>
-            <p class="text-sm text-ngekos-grey">Fill the fields below with your valid data</p>
+            <h1 class="text-lg font-semibold">Informasi Anda</h1>
+            <p class="text-sm text-ngekos-grey">Isilah Kolom Dengan Data Anda Yang Valid.</p>
         </div>
         <div id="InputContainer" class="flex flex-col gap-[18px]">
             <div class="flex flex-col w-full gap-2 px-5">
-                <p class="font-semibold">Complete Name</p>
+                <p class="font-semibold">Nama Lengkap</p>
                 <label
                     class="flex items-center w-full rounded-full p-[14px_20px] gap-3 bg-white focus-within:ring-1 focus-within:ring-[#91BF77] transition-all duration-300 @error('name') border-red-500 @enderror">
-                    <img src="{{ asset('assets/images/icons/profile-2user.svg') }}" class="w-5 h-5 flex shrink-0"
+                    <img src="{{ asset('assets/images/icons/profile-2user.svg') }}" class="flex w-5 h-5 shrink-0"
                         alt="icon">
                     <input type="text" name="name" id=""
-                        class="appearance-none outline-none w-full font-semibold placeholder:text-ngekos-grey placeholder:font-normal"
+                        class="w-full font-semibold outline-none appearance-none placeholder:text-ngekos-grey placeholder:font-normal"
                         placeholder="Write your name" value="{{ old('name') }}">
                 </label>
                 @error('name')
@@ -86,12 +86,12 @@
                 @enderror
             </div>
             <div class="flex flex-col w-full gap-2 px-5">
-                <p class="font-semibold">Email Address</p>
+                <p class="font-semibold">Alamat Email</p>
                 <label
                     class="flex items-center w-full rounded-full p-[14px_20px] gap-3 bg-white focus-within:ring-1 focus-within:ring-[#91BF77] transition-all duration-300 @error('email') border-red-500 @enderror">
-                    <img src="{{ asset('assets/images/icons/sms.svg') }}" class="w-5 h-5 flex shrink-0" alt="icon">
+                    <img src="{{ asset('assets/images/icons/sms.svg') }}" class="flex w-5 h-5 shrink-0" alt="icon">
                     <input type="email" name="email" id=""
-                        class="appearance-none outline-none w-full font-semibold placeholder:text-ngekos-grey placeholder:font-normal"
+                        class="w-full font-semibold outline-none appearance-none placeholder:text-ngekos-grey placeholder:font-normal"
                         placeholder="Write your email" value="{{ old('email') }}">
                 </label>
                 @error('email')
@@ -99,12 +99,12 @@
                 @enderror
             </div>
             <div class="flex flex-col w-full gap-2 px-5">
-                <p class="font-semibold">Phone No</p>
+                <p class="font-semibold">No HP</p>
                 <label
                     class="flex items-center w-full rounded-full p-[14px_20px] gap-3 bg-white focus-within:ring-1 focus-within:ring-[#91BF77] transition-all duration-300 @error('phone_number') border-red-500 @enderror">
-                    <img src="{{ asset('assets/images/icons/call.svg') }}" class="w-5 h-5 flex shrink-0" alt="icon">
+                    <img src="{{ asset('assets/images/icons/call.svg') }}" class="flex w-5 h-5 shrink-0" alt="icon">
                     <input type="tel" name="phone_number" id=""
-                        class="appearance-none outline-none w-full font-semibold placeholder:text-ngekos-grey placeholder:font-normal"
+                        class="w-full font-semibold outline-none appearance-none placeholder:text-ngekos-grey placeholder:font-normal"
                         placeholder="Write your phone" value="{{ old('phone') }}">
                 </label>
                 @error('phone_number')
@@ -112,22 +112,22 @@
                 @enderror
             </div>
             <div class="flex items-center justify-between px-5">
-                <p class="font-semibold">Duration in Month</p>
+                <p class="font-semibold">Durasi Bulan</p>
                 <div class="relative flex items-center gap-[10px] w-fit">
-                    <button type="button" id="Minus" class="w-12 h-12 flex-shrink-0">
+                    <button type="button" id="Minus" class="flex-shrink-0 w-12 h-12">
                         <img src="{{ asset('assets/images/icons/minus.svg') }}" alt="icon">
                     </button>
                     <input id="Duration" type="text" value="1" name="duration"
                         class="appearance-none outline-none !bg-transparent w-[42px] text-center font-semibold text-[22px] leading-[33px]"
                         inputmode="numeric" pattern="[0-9]*">
-                    <button type="button" id="Plus" class="w-12 h-12 flex-shrink-0">
+                    <button type="button" id="Plus" class="flex-shrink-0 w-12 h-12">
                         <img src="{{ asset('assets/images/icons/plus.svg') }}" alt="icon">
                     </button>
                 </div>
             </div>
             <div class="flex flex-col gap-2">
-                <p class="font-semibold px-5">Moving Date</p>
-                <div class="swiper w-full overflow-x-hidden">
+                <p class="px-5 font-semibold">Tanggal Menginap</p>
+                <div class="w-full overflow-x-hidden swiper">
                     <div class="swiper-wrapper select-dates">
                     </div>
                 </div>
@@ -140,11 +140,10 @@
                         <p id="price" class="font-bold text-xl leading-[30px] text-white">
                             <!-- price dari js -->
                         </p>
-                        <span class="text-sm text-white">Grand Total</span>
+                        <span class="text-sm text-white">Total Keseluruhan</span>
                     </div>
                     <button type="submit" class="flex shrink-0 rounded-full py-[14px] px-5 font-bold text-white"
-                        style="background-color: rgb(22, 208, 228);">Book
-                        Now</button>
+                        style="background-color: rgb(22, 208, 228);">Booking</button>
                 </div>
             </div>
         </div>

@@ -7,14 +7,14 @@
         </div>
         <div id="TopNavAbsolute" class="absolute top-[60px] flex items-center justify-between w-full px-5 z-10">
             <a href="{{ route('home') }}"
-                class="w-12 h-12 flex items-center justify-center shrink-0 rounded-full overflow-hidden bg-white/10 backdrop-blur-sm">
+                class="flex items-center justify-center w-12 h-12 overflow-hidden rounded-full shrink-0 bg-white/10 backdrop-blur-sm">
                 <img src="{{ asset('assets/images/icons/arrow-left-transparent.svg') }}" class="w-8 h-8" alt="icon">
             </a>
-            <p class="font-semibold text-white">Details</p>
-            <button
-                class="w-12 h-12 flex items-center justify-center shrink-0 rounded-full overflow-hidden bg-white/10 backdrop-blur-sm">
+            <p class="font-semibold text-white">Detail Kos</p>
+            <a href="#TabsContent"
+                class="flex items-center justify-center w-12 h-12 overflow-hidden rounded-full shrink-0 bg-white/10 backdrop-blur-sm">
                 <img src="{{ asset('assets/images/icons/like.svg') }}" class="w-[26px] h-[26px]" alt="">
-            </button>
+            </a>
         </div>
         <div id="Gallery" class="swiper-gallery w-full overflow-x-hidden -mb-[38px]">
             <div class="swiper-wrapper">
@@ -22,17 +22,17 @@
                     @foreach ($boardingHouse->rooms as $room)
                         @if ($room->roomImages->isNotEmpty())
                             @foreach ($room->roomImages as $roomImage)
-                                <div class="swiper-slide w-full"> <!-- ubah !w-fit jadi w-full -->
+                                <div class="w-full swiper-slide"> <!-- ubah !w-fit jadi w-full -->
                                     <div class="flex shrink-0 w-full h-[430px] overflow-hidden">
                                         <img src="{{ asset('storage/' . $roomImage->image) }}"
-                                            class="w-full h-full object-cover" alt="gallery thumbnails">
+                                            class="object-cover w-full h-full" alt="gallery thumbnails">
                                     </div>
                                 </div>
                             @endforeach
                         @endif
                     @endforeach
                 @else
-                    <p class="px-5 text-gray-400">No images available.</p>
+                    <p class="px-5 text-gray-400">Gambar Tidak Tersedia.</p>
                 @endif
             </div>
         </div>
@@ -43,7 +43,7 @@
                 <div
                     class="flex flex-col items-center text-center shrink-0 rounded-[22px] border border-[#F1F2F6] p-[10px_20px] gap-2 bg-white">
                     <img src="{{ asset('assets/images/icons/star.svg') }}" class="w-6 h-6" alt="icon">
-                    <p class="font-bold text-sm">
+                    <p class="text-sm font-bold">
                         {{ number_format($boardingHouse->testimonials->avg('rating'), 1) }}/5
                     </p>
                 </div>
@@ -73,10 +73,10 @@
             </div>
             <hr class="border-[#F1F2F6] mx-5">
             <div id="About" class="flex flex-col gap-[6px] px-5">
-                <h2 class="font-bold">About</h2>
+                <h2 class="font-bold">Tentang</h2>
                 <p class="leading-[30px]">{!! $boardingHouse->description !!}</p>
             </div>
-            <div id="Tabs" class="swiper-tab w-full overflow-x-hidden">
+            <div id="Tabs" class="w-full overflow-x-hidden swiper-tab">
                 <div class="swiper-wrapper">
                     <div class="swiper-slide !w-fit">
                         <button
@@ -86,33 +86,33 @@
                     <div class="swiper-slide !w-fit">
                         <button
                             class="tab-link rounded-full p-[8px_14px] border border-[#F1F2F6] text-sm font-semibold hover:bg-ngekos-black hover:text-white transition-all duration-300"
-                            data-target-tab="#Testimonials-Tab">Testimonials</button>
+                            data-target-tab="#Testimonials-Tab">Testimoni</button>
                     </div>
                     <div class="swiper-slide !w-fit">
                         <button
                             class="tab-link rounded-full p-[8px_14px] border border-[#F1F2F6] text-sm font-semibold hover:bg-ngekos-black hover:text-white transition-all duration-300"
-                            data-target-tab="#Rules-Tab">Rules</button>
+                            data-target-tab="#Rules-Tab">Peraturan</button>
                     </div>
                     <div class="swiper-slide !w-fit">
                         <button
                             class="tab-link rounded-full p-[8px_14px] border border-[#F1F2F6] text-sm font-semibold hover:bg-ngekos-black hover:text-white transition-all duration-300"
-                            data-target-tab="#Contact-Tab">Contact</button>
+                            data-target-tab="#Contact-Tab">Kontak</button>
                     </div>
                     <div class="swiper-slide !w-fit">
                         <button
                             class="tab-link rounded-full p-[8px_14px] border border-[#F1F2F6] text-sm font-semibold hover:bg-ngekos-black hover:text-white transition-all duration-300"
-                            data-target-tab="#Rewards-Tab">Rewards</button>
+                            data-target-tab="#Rewards-Tab">Hadiah</button>
                     </div>
                 </div>
             </div>
             <div id="TabsContent" class="px-5">
-                <div id="Bonus-Tab" class="tab-content flex flex-col gap-5">
+                <div id="Bonus-Tab" class="flex flex-col gap-5 tab-content">
                     <div class="flex flex-col gap-4">
                         @foreach ($boardingHouse->bonuses as $bonus)
                             <div
                                 class="bonus-card flex items-center rounded-[22px] border border-[#F1F2F6] p-[10px] gap-3 hover:border-[#91BF77] transition-all duration-300">
                                 <div class="flex w-[120px] h-[90px] shrink-0 rounded-[18px] bg-[#D9D9D9] overflow-hidden">
-                                    <img src="{{ asset('storage/' . $bonus->image) }}" class="w-full h-full object-cover"
+                                    <img src="{{ asset('storage/' . $bonus->image) }}" class="object-cover w-full h-full"
                                         alt="thumbnails">
                                 </div>
                                 <div>
@@ -124,7 +124,7 @@
                     </div>
                 </div>
 
-                <div id="Testimonials-Tab" class="tab-content hidden flex-col gap-5">
+                <div id="Testimonials-Tab" class="flex-col hidden gap-5 tab-content">
                     <div class="flex flex-col gap-4">
                         @foreach ($boardingHouse->testimonials as $testimonial)
                             <div
@@ -133,7 +133,7 @@
                                     <div
                                         class="w-[70px] h-[70px] flex shrink-0 rounded-full border-4 border-white ring-1 ring-[#F1F2F6] overflow-hidden">
                                         <img src="{{ asset('storage/' . $testimonial->photo) }}"
-                                            class="w-full h-full object-cover" alt="icon">
+                                            class="object-cover w-full h-full" alt="icon">
                                     </div>
                                     <div>
                                         <p class="font-semibold">{{ $testimonial->name }}</p>
@@ -152,12 +152,9 @@
 
                     </div>
                 </div>
-                <div id="Rules-Tab" class="tab-content flex-col gap-5 hidden">Lorem ipsum dolor sit amet consectetur
-                    adipisicing elit. Porro, vitae.</div>
-                <div id="Contact-Tab" class="tab-content flex-col gap-5 hidden">Lorem ipsum dolor sit amet consectetur
-                    adipisicing elit. Porro, vitae.</div>
-                <div id="Rewards-Tab" class="tab-content flex-col gap-5 hidden">Lorem ipsum dolor sit amet consectetur
-                    adipisicing elit. Porro, vitae.</div>
+                <div id="Rules-Tab" class="flex-col hidden gap-5 tab-content">Belum ada peraturan yang tersedia.</div>
+                <div id="Contact-Tab" class="flex-col hidden gap-5 tab-content">Belum ada kontak yang tersedia.</div>
+                <div id="Rewards-Tab" class="flex-col hidden gap-5 tab-content">Belum ada hadiah yang tersedia.</div>
             </div>
         </main>
         <div id="BottomNav" class="relative flex w-full h-[138px] shrink-0">
@@ -171,7 +168,7 @@
                     <a href="{{ route('kos.rooms', $boardingHouse->slug) }}"
                         class="flex shrink-0 rounded-full py-[14px] px-5 font-bold text-white"
                         style="background-color: rgb(22, 208, 228);">
-                        Book Now
+                        Booking
                     </a>
 
                 </div>
@@ -181,4 +178,16 @@
 @endsection
 @section('scripts')
     <script src="{{ asset('assets/js/details.js') }}"></script>
+    <script>
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function(e) {
+                e.preventDefault();
+                const target = document.querySelector(this.getAttribute('href'));
+                target.scrollIntoView({
+                    behavior: 'smooth',
+                    block: 'start'
+                });
+            });
+        });
+    </script>
 @endsection
