@@ -8,9 +8,17 @@ interface BoardingHouseRepositoryInterface
 
     public function getPopularBoardingHouses($limit = 5);
 
-    public function getBoardingHouseByCitySlug($slug);
+    public function getBoardingHouseByCitySlug(
+        string $slug,
+        ?string $sortBy = null,
+        string $order = 'asc'
+    );
 
-    public function getBoardingHouseByCategorySlug($slug);
+    public function getBoardingHouseByCategorySlug(
+        string $slug,
+        ?string $sortBy = null,
+        string $order = 'asc'
+    );
 
     public function getBoardingHouseBySlug($slug);
 

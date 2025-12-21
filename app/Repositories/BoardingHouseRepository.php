@@ -18,14 +18,14 @@ class BoardingHouseRepository implements BoardingHouseRepositoryInterface
         }
 
         if ($city) {
-            $query->whereHas('city', function (Builder $query) use ($city){
-                $query ->where('slug', $city);
+            $query->whereHas('city', function (Builder $query) use ($city) {
+                $query->where('slug', $city);
             });
         }
 
         if ($category) {
-            $query->whereHas('category', function (Builder $query) use ($category){
-                $query ->where('slug', $category);
+            $query->whereHas('category', function (Builder $query) use ($category) {
+                $query->where('slug', $category);
             });
         }
         return $query->get();
@@ -34,18 +34,50 @@ class BoardingHouseRepository implements BoardingHouseRepositoryInterface
     {
         return BoardingHouse::withCount('transactions')->orderBy('transactions_count', 'desc')->take($limit)->get();
     }
-    public function getBoardingHouseByCitySlug($slug)
-    {
-        return BoardingHouse::whereHas('city', function(Builder $query) use ($slug){
-               $query->where('slug', $slug);
-        })->get();
+    public function getBoardingHouseByCitySlug(
+        string $slug,
+        ?string $sortBy = null,
+        string $order = 'asc'
+    ) {
+        $query = BoardingHouse::whereHas('city', function (Builder $query) use ($slug) {
+            $query->where('slug', $slug);
+        })
+            ->with(['rooms', 'city']);
+
+        if ($sortBy === 'price') {
+            $query->orderBy('price', $order);
+        }
+
+        if ($sortBy === 'capacity') {
+            $query->withSum('rooms as total_capacity', 'capacity')
+                ->orderBy('total_capacity', $order);
+        }
+
+        return $query->get();
     }
-    public function getBoardingHouseByCategorySlug($slug)
-    {
-        return BoardingHouse::whereHas('category', function(Builder $query) use ($slug){
-               $query->where('slug', $slug);
-        })->get();
+
+    public function getBoardingHouseByCategorySlug(
+        string $slug,
+        ?string $sortBy = null,
+        string $order = 'asc'
+    ) {
+        $query = BoardingHouse::whereHas('category', function (Builder $query) use ($slug) {
+            $query->where('slug', $slug);
+        })
+            ->with(['rooms', 'city']);
+
+        if ($sortBy === 'price') {
+            $query->orderBy('price', $order);
+        }
+
+        if ($sortBy === 'capacity') {
+            $query->withSum('rooms as total_capacity', 'capacity')
+                ->orderBy('total_capacity', $order);
+        }
+
+        return $query->get();
     }
+
     public function getBoardingHouseBySlug($slug)
     {
         return BoardingHouse::where('slug', $slug)->first();

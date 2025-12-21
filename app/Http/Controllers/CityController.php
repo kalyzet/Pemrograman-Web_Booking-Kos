@@ -20,15 +20,23 @@ class CityController extends Controller
         $this->cityRepository = $cityRepository;
     }
 
-    public function show($slug)
+    public function show(Request $request, $slug)
     {
+        $sort = $request->get('sort');
+
+        [$sortBy, $order] = match ($sort) {
+            'price_asc' => ['price', 'asc'],
+            'price_desc' => ['price', 'desc'],
+            'capacity_asc' => ['capacity', 'asc'],
+            'capacity_desc' => ['capacity', 'desc'],
+            default => [null, 'asc'],
+        };
+
         $city = $this->cityRepository->getCityBySlug($slug);
-        $boardingHouses = $this->boardingHouseRepository->getBoardingHouseByCitySlug($slug);
 
-        return view('pages.city.show', [
-        'city' => $city,
-        'boardingHouses' => $boardingHouses
-]);
+        $boardingHouses = $this->boardingHouseRepository
+            ->getBoardingHouseByCitySlug($slug, $sortBy, $order);
 
+        return view('pages.city.show', compact('city', 'boardingHouses'));
     }
 }
