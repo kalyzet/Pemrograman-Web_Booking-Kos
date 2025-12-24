@@ -5,30 +5,30 @@
         class="absolute top-0 w-full h-[230px] rounded-b-[75px] bg-[linear-gradient(180deg,#e6f6f9_0%,#D2EDE4_100%)]"></div>
     <div id="TopNav" class="relative flex items-center justify-between px-5 mt-[60px]">
         <a href="{{ route('home') }}"
-            class="w-12 h-12 flex items-center justify-center shrink-0 rounded-full overflow-hidden bg-white">
+            class="flex items-center justify-center w-12 h-12 overflow-hidden bg-white rounded-full shrink-0">
             <img src="assets/images/icons/arrow-left.svg" class="w-[28px] h-[28px]" alt="icon">
         </a>
         <p class="font-semibold">Detail Booking Saya</p>
-        <div class="dummy-btn w-12"></div>
+        <div class="w-12 dummy-btn"></div>
     </div>
     <div id="Header" class="relative flex items-center justify-between gap-2 px-5 mt-[18px]">
         <div class="flex flex-col w-full rounded-[30px] border border-[#F1F2F6] p-4 gap-4 bg-white">
             <div class="flex gap-4">
                 <div class="flex w-[120px] h-[132px] shrink-0 rounded-[30px] bg-[#D9D9D9] overflow-hidden">
                     <img src="{{ asset('storage/' . $transaction->boardingHouse->thumbnail) }}"
-                        class="w-full h-full object-cover" alt="icon">
+                        class="object-cover w-full h-full" alt="icon">
                 </div>
-                <div class="flex flex-col gap-3 w-full">
+                <div class="flex flex-col w-full gap-3">
                     <p class="font-semibold text-lg leading-[27px] line-clamp-2 min-h-[54px]">
                         {{ $transaction->boardingHouse->name }}</p>
                     <hr class="border-[#F1F2F6]">
                     <div class="flex items-center gap-[6px]">
-                        <img src="{{ asset('assets/images/icons/location.svg') }}" class="w-5 h-5 flex shrink-0"
+                        <img src="{{ asset('assets/images/icons/location.svg') }}" class="flex w-5 h-5 shrink-0"
                             alt="icon">
                         <p class="text-sm text-ngekos-grey">Wilayah {{ $transaction->boardingHouse->city->name }}</p>
                     </div>
                     <div class="flex items-center gap-[6px]">
-                        <img src="{{ asset('assets/images/icons/profile-2user.svg') }}" class="w-5 h-5 flex shrink-0"
+                        <img src="{{ asset('assets/images/icons/profile-2user.svg') }}" class="flex w-5 h-5 shrink-0"
                             alt="icon">
                         <p class="text-sm text-ngekos-grey">Di {{ $transaction->boardingHouse->category->name }}</p>
                     </div>
@@ -38,26 +38,26 @@
             <div class="flex gap-4">
                 <div class="flex w-[120px] h-[156px] shrink-0 rounded-[30px] bg-[#D9D9D9] overflow-hidden">
                     @foreach ($transaction->room->roomImages as $img)
-                        <img src="{{ asset('storage/' . $img->image) }}" class="w-full h-full object-cover" alt="icon">
+                        <img src="{{ asset('storage/' . $img->image) }}" class="object-cover w-full h-full" alt="icon">
                     @endforeach
                 </div>
-                <div class="flex flex-col gap-3 w-full">
+                <div class="flex flex-col w-full gap-3">
                     <p class="font-semibold text-lg leading-[27px]">{{ $transaction->room->name }}</p>
                     <hr class="border-[#F1F2F6]">
                     <div class="flex items-center gap-[6px]">
-                        <img src="{{ asset('assets/images/icons/profile-2user.svg') }}" class="w-5 h-5 flex shrink-0"
+                        <img src="{{ asset('assets/images/icons/profile-2user.svg') }}" class="flex w-5 h-5 shrink-0"
                             alt="icon">
                         <p class="text-sm text-ngekos-grey">{{ $transaction->room->capacity }} Orang</p>
                     </div>
                     <div class="flex items-center gap-[6px]">
-                        <img src="{{ asset('assets/images/icons/3dcube.svg') }}" class="w-5 h-5 flex shrink-0"
+                        <img src="{{ asset('assets/images/icons/3dcube.svg') }}" class="flex w-5 h-5 shrink-0"
                             alt="icon">
                         <p class="text-sm text-ngekos-grey">{{ $transaction->room->square_feet }} Kaki Persegi</p>
                     </div>
                     <hr class="border-[#F1F2F6]">
-                    <p class="font-semibold text-lg" style="color: rgb(49, 222, 241);">Rp
+                    <p class="text-lg font-semibold" style="color: rgb(49, 222, 241);">Rp
                         {{ number_format($transaction->room->price_per_month, 0, ',', '.') }}<span
-                            class="text-sm text-ngekos-grey font-normal">/bulan</span></p>
+                            class="text-sm font-normal text-ngekos-grey">/bulan</span></p>
                 </div>
             </div>
         </div>
@@ -65,7 +65,7 @@
     <div
         class="accordion group flex flex-col rounded-[30px] p-5 bg-[#F5F6F8] mx-5 mt-5 overflow-hidden has-[:checked]:!h-[68px] transition-all duration-300">
         <label class="relative flex items-center justify-between">
-            <p class="font-semibold text-lg">Pelanggan</p>
+            <p class="text-lg font-semibold">Pelanggan</p>
             <img src="assets/images/icons/arrow-up.svg"
                 class="w-[28px] h-[28px] flex shrink-0 group-has-[:checked]:rotate-180 transition-all duration-300"
                 alt="icon">
@@ -74,21 +74,21 @@
         <div class="flex flex-col gap-4 pt-[22px]">
             <div class="flex items-center justify-between">
                 <div class="flex items-center gap-3">
-                    <img src="assets/images/icons/profile-2user.svg" class="w-6 h-6 flex shrink-0" alt="icon">
+                    <img src="assets/images/icons/profile-2user.svg" class="flex w-6 h-6 shrink-0" alt="icon">
                     <p class="text-ngekos-grey">Nama</p>
                 </div>
                 <p class="font-semibold">{{ $transaction->name }}</p>
             </div>
             <div class="flex items-center justify-between">
                 <div class="flex items-center gap-3">
-                    <img src="assets/images/icons/sms.svg" class="w-6 h-6 flex shrink-0" alt="icon">
+                    <img src="assets/images/icons/sms.svg" class="flex w-6 h-6 shrink-0" alt="icon">
                     <p class="text-ngekos-grey">Email</p>
                 </div>
                 <p class="font-semibold">{{ $transaction->email }}</p>
             </div>
             <div class="flex items-center justify-between">
                 <div class="flex items-center gap-3">
-                    <img src="assets/images/icons/call.svg" class="w-6 h-6 flex shrink-0" alt="icon">
+                    <img src="assets/images/icons/call.svg" class="flex w-6 h-6 shrink-0" alt="icon">
                     <p class="text-ngekos-grey">Nomor WhatsApp</p>
                 </div>
                 <p class="font-semibold">{{ $transaction->phone_number }}</p>
@@ -98,7 +98,7 @@
     <div
         class="accordion group flex flex-col rounded-[30px] p-5 bg-[#F5F6F8] mx-5 mt-5 overflow-hidden has-[:checked]:!h-[68px] transition-all duration-300">
         <label class="relative flex items-center justify-between">
-            <p class="font-semibold text-lg">Booking</p>
+            <p class="text-lg font-semibold">Booking</p>
             <img src="assets/images/icons/arrow-up.svg"
                 class="w-[28px] h-[28px] flex shrink-0 group-has-[:checked]:rotate-180 transition-all duration-300"
                 alt="icon">
@@ -107,21 +107,21 @@
         <div class="flex flex-col gap-4 pt-[22px]">
             <div class="flex items-center justify-between">
                 <div class="flex items-center gap-3">
-                    <img src="assets/images/icons/calendar.svg" class="w-6 h-6 flex shrink-0" alt="icon">
+                    <img src="assets/images/icons/calendar.svg" class="flex w-6 h-6 shrink-0" alt="icon">
                     <p class="text-ngekos-grey">ID Booking</p>
                 </div>
                 <p class="font-semibold">{{ $transaction->code }}</p>
             </div>
             <div class="flex items-center justify-between">
                 <div class="flex items-center gap-3">
-                    <img src="assets/images/icons/clock.svg" class="w-6 h-6 flex shrink-0" alt="icon">
+                    <img src="assets/images/icons/clock.svg" class="flex w-6 h-6 shrink-0" alt="icon">
                     <p class="text-ngekos-grey">Durasi</p>
                 </div>
                 <p class="font-semibold">{{ $transaction->duration }} Bulan</p>
             </div>
             <div class="flex items-center justify-between">
                 <div class="flex items-center gap-3">
-                    <img src="assets/images/icons/calendar.svg" class="w-6 h-6 flex shrink-0" alt="icon">
+                    <img src="assets/images/icons/calendar.svg" class="flex w-6 h-6 shrink-0" alt="icon">
                     <p class="text-ngekos-grey">Dimulai Pada</p>
                 </div>
                 <p class="font-semibold">
@@ -130,7 +130,7 @@
             </div>
             <div class="flex items-center justify-between">
                 <div class="flex items-center gap-3">
-                    <img src="assets/images/icons/calendar.svg" class="w-6 h-6 flex shrink-0" alt="icon">
+                    <img src="assets/images/icons/calendar.svg" class="flex w-6 h-6 shrink-0" alt="icon">
                     <p class="text-ngekos-grey">Sampai Pada</p>
                 </div>
                 <p class="font-semibold">
@@ -142,7 +142,7 @@
     <div
         class="accordion group flex flex-col rounded-[30px] p-5 bg-[#F5F6F8] mx-5 mt-5 overflow-hidden has-[:checked]:!h-[68px] transition-all duration-300">
         <label class="relative flex items-center justify-between">
-            <p class="font-semibold text-lg">Pembayaran</p>
+            <p class="text-lg font-semibold">Pembayaran</p>
             <img src="assets/images/icons/arrow-up.svg"
                 class="w-[28px] h-[28px] flex shrink-0 group-has-[:checked]:rotate-180 transition-all duration-300"
                 alt="icon">
@@ -158,7 +158,7 @@
         <div class="flex flex-col gap-4 pt-[22px]">
             <div class="flex items-center justify-between">
                 <div class="flex items-center gap-3">
-                    <img src="assets/images/icons/card-tick.svg" class="w-6 h-6 flex shrink-0" alt="icon">
+                    <img src="assets/images/icons/card-tick.svg" class="flex w-6 h-6 shrink-0" alt="icon">
                     <p class="text-ngekos-grey">Pembayaran</p>
                 </div>
                 @if ($transaction->payment_method === 'full_payment')
@@ -169,35 +169,35 @@
             </div>
             <div class="flex items-center justify-between">
                 <div class="flex items-center gap-3">
-                    <img src="assets/images/icons/receipt-2.svg" class="w-6 h-6 flex shrink-0" alt="icon">
+                    <img src="assets/images/icons/receipt-2.svg" class="flex w-6 h-6 shrink-0" alt="icon">
                     <p class="text-ngekos-grey">Harga Kos</p>
                 </div>
                 <p class="font-semibold">Rp {{ number_format($transaction->room->price_per_month, 0, ',', '.') }}</p>
             </div>
             <div class="flex items-center justify-between">
                 <div class="flex items-center gap-3">
-                    <img src="assets/images/icons/receipt-2.svg" class="w-6 h-6 flex shrink-0" alt="icon">
+                    <img src="assets/images/icons/receipt-2.svg" class="flex w-6 h-6 shrink-0" alt="icon">
                     <p class="text-ngekos-grey">Sub Total</p>
                 </div>
                 <p class="font-semibold">Rp {{ number_format($subtotal, 0, ',', '.') }}</p>
             </div>
             <div class="flex items-center justify-between">
                 <div class="flex items-center gap-3">
-                    <img src="assets/images/icons/receipt-disscount.svg" class="w-6 h-6 flex shrink-0" alt="icon">
+                    <img src="assets/images/icons/receipt-disscount.svg" class="flex w-6 h-6 shrink-0" alt="icon">
                     <p class="text-ngekos-grey">PPN 12%</p>
                 </div>
                 <p class="font-semibold">Rp {{ number_format($tax, 0, ',', '.') }}</p>
             </div>
             <div class="flex items-center justify-between">
                 <div class="flex items-center gap-3">
-                    <img src="assets/images/icons/security-user.svg" class="w-6 h-6 flex shrink-0" alt="icon">
+                    <img src="assets/images/icons/security-user.svg" class="flex w-6 h-6 shrink-0" alt="icon">
                     <p class="text-ngekos-grey">Asuransi</p>
                 </div>
                 <p class="font-semibold">Rp {{ number_format($insurance, 0, ',', '.') }}</p>
             </div>
             <div class="flex items-center justify-between">
                 <div class="flex items-center gap-3">
-                    <img src="assets/images/icons/receipt-text.svg" class="w-6 h-6 flex shrink-0" alt="icon">
+                    <img src="assets/images/icons/receipt-text.svg" class="flex w-6 h-6 shrink-0" alt="icon">
                     <p class="text-ngekos-grey">Total Keseluruhan</p>
                 </div>
                 @if ($transaction->payment_method === 'full_payment')
@@ -209,7 +209,7 @@
             @if ($transaction->payment_status === 'pending')
                 <div class="flex items-center justify-between">
                     <div class="flex items-center gap-3">
-                        <img src="assets/images/icons/security-card.svg" class="w-6 h-6 flex shrink-0" alt="icon">
+                        <img src="assets/images/icons/security-card.svg" class="flex w-6 h-6 shrink-0" alt="icon">
                         <p class="text-ngekos-grey">Status</p>
                     </div>
                     <p class="rounded-full p-[6px_12px] bg-ngekos-orange font-bold text-xs leading-[18px]">TERTUNDA</p>
@@ -217,7 +217,7 @@
             @else
                 <div class="flex items-center justify-between">
                     <div class="flex items-center gap-3">
-                        <img src="assets/images/icons/security-card.svg" class="w-6 h-6 flex shrink-0" alt="icon">
+                        <img src="assets/images/icons/security-card.svg" class="flex w-6 h-6 shrink-0" alt="icon">
                         <p class="text-ngekos-grey">Status</p>
                     </div>
                     <p class="rounded-full p-[6px_12px] bg-[#91e2eb] font-bold text-xs leading-[18px]">SUKSES</p>
@@ -227,7 +227,8 @@
     </div>
     <div id="BottomButton" class="relative flex w-full h-[98px] shrink-0">
         <div class="fixed bottom-[30px] w-full max-w-[640px] px-5 z-10">
-            <a href="#" class="flex w-full justify-center rounded-full p-[14px_20px] font-bold text-white"
+            <a href="{{ route('help-costumer') }}"
+                class="flex w-full justify-center rounded-full p-[14px_20px] font-bold text-white"
                 style="background-color: rgb(22, 208, 228);">Hubungi
                 Customer Service</a>
         </div>

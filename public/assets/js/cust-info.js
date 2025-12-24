@@ -17,7 +17,7 @@ const lastDayOfMonth = new Date(
 
 for (let i = today.getDate(); i <= lastDayOfMonth; i++) {
     const date = new Date(today.getFullYear(), today.getMonth(), i);
-    const month = date.toLocaleString("default", {
+    const month = date.toLocaleString("id-ID", {
         month: "short",
     });
 

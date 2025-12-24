@@ -79,7 +79,7 @@
                         alt="icon">
                     <input type="text" name="name" id=""
                         class="w-full font-semibold outline-none appearance-none placeholder:text-ngekos-grey placeholder:font-normal"
-                        placeholder="Write your name" value="{{ old('name') }}">
+                        placeholder="Tulis Nama Anda" value="{{ old('name') }}">
                 </label>
                 @error('name')
                     <p class="text-sm text-red-500">{{ $message }}</p>
@@ -92,7 +92,7 @@
                     <img src="{{ asset('assets/images/icons/sms.svg') }}" class="flex w-5 h-5 shrink-0" alt="icon">
                     <input type="email" name="email" id=""
                         class="w-full font-semibold outline-none appearance-none placeholder:text-ngekos-grey placeholder:font-normal"
-                        placeholder="Write your email" value="{{ old('email') }}">
+                        placeholder="Tulis Email Anda" value="{{ old('email') }}">
                 </label>
                 @error('email')
                     <p class="text-sm text-red-500">{{ $message }}</p>
@@ -105,7 +105,7 @@
                     <img src="{{ asset('assets/images/icons/call.svg') }}" class="flex w-5 h-5 shrink-0" alt="icon">
                     <input type="tel" name="phone_number" id=""
                         class="w-full font-semibold outline-none appearance-none placeholder:text-ngekos-grey placeholder:font-normal"
-                        placeholder="Write your phone" value="{{ old('phone') }}">
+                        placeholder="Tulis Nomor HP Anda" value="{{ old('phone') }}">
                 </label>
                 @error('phone_number')
                     <p class="text-sm text-red-500">{{ $message }}</p>
@@ -138,7 +138,6 @@
                 <div class="flex items-center justify-between rounded-[40px] py-4 px-6 bg-ngekos-black">
                     <div class="flex flex-col gap-[2px]">
                         <p id="price" class="font-bold text-xl leading-[30px] text-white">
-                            <!-- price dari js -->
                         </p>
                         <span class="text-sm text-white">Total Keseluruhan</span>
                     </div>
