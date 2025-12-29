@@ -3,38 +3,45 @@ const swiperTabs = new Swiper(".swiper", {
     spaceBetween: 14,
     slidesOffsetAfter: 20,
     slidesOffsetBefore: 20,
+
+    freeMode: true,
+
+    noSwiping: true,
+    noSwipingClass: "no-swipe",
+
+    preventClicks: false,
+    preventClicksPropagation: false,
 });
 
 const datesElement = document.querySelector(".select-dates");
-const today = new Date();
-const dates = [];
 
-const lastDayOfMonth = new Date(
-    today.getFullYear(),
-    today.getMonth() + 1,
-    0
-).getDate();
+const startDate = new Date();
 
-for (let i = today.getDate(); i <= lastDayOfMonth; i++) {
-    const date = new Date(today.getFullYear(), today.getMonth(), i);
-    const month = date.toLocaleString("id-ID", {
-        month: "short",
-    });
+const endDate = new Date(2026, 11, 31);
 
-    const realDate = new Date(date.getTime() + 1000 * 60 * 60 * 24)
-        .toISOString()
-        .split("T")[0];
+while (startDate <= endDate) {
+    const day = startDate.getDate();
+    const month = startDate.toLocaleString("id-ID", { month: "short" });
 
-    dates.push(realDate);
+    const realDate = startDate.toISOString().split("T")[0];
 
     datesElement.innerHTML += `
         <div class="swiper-slide !w-fit py-[2px]">
-            <label class="relative flex flex-col items-center justify-center w-fit rounded-3xl p-[14px_20px] gap-3 bg-white border border-white hover:border-[#91e2eb] has-[:checked]:ring-2 has-[:checked]:ring-[#91e2eb] transition-all duration-300">
+            <label class="no-swipe relative flex flex-col items-center justify-center w-fit rounded-3xl p-[14px_20px] gap-3 bg-white border border-white hover:border-[#91e2eb] has-[:checked]:ring-2 has-[:checked]:ring-[#91e2eb] transition-all duration-300">
                 <img src="/assets/images/icons/calendar.svg" class="w-8 h-8" alt="icon">
-                <p class="font-semibold text-nowrap">${date.getDate()} ${month}</p>
-                <input type="radio" name="start_date" class="absolute top-1/2 left-1/2 -z-10 opacity-0" value="${realDate}" required>
+                <p class="font-semibold text-nowrap">${day} ${month}</p>
+                <input
+                    type="radio"
+                    name="start_date"
+                    class="absolute top-1/2 left-1/2 -z-10 opacity-0"
+                    value="${realDate}"
+                    required
+                >
             </label>
-        </div>`;
+        </div>
+    `;
+
+    startDate.setDate(startDate.getDate() + 1);
 }
 
 const minusButton = document.getElementById("Minus");

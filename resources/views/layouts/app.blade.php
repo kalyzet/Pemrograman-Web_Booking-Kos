@@ -35,6 +35,26 @@
             opacity: 1;
             visibility: visible;
         }
+
+        .swiper,
+        .swiper * {
+            user-select: none;
+            -webkit-user-select: none;
+            -ms-user-select: none;
+
+            -webkit-touch-callout: none;
+            -webkit-tap-highlight-color: transparent;
+        }
+
+        .swiper {
+            touch-action: pan-x;
+        }
+
+        .swiper img {
+            pointer-events: none;
+            user-drag: none;
+            -webkit-user-drag: none;
+        }
     </style>
 
     <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700;800;900&display=swap"
