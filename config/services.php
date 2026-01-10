@@ -46,5 +46,9 @@ return [
         'city' => env('WEATHER_CITY', 'Banjarmasin'),
     ],
 
+    'whatsapp' => [
+        'admin' => env('WHATSAPP_ADMIN'),
+    ],
+
 
 ];

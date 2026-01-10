@@ -121,7 +121,7 @@ class BookingController extends Controller
             $this->twilio->sendWhatsApp($userNumber, $transaction->getPaymentMessage());
 
             // Kirim notifikasi ke admin
-            $adminNumber = '+6285346519151'; // ganti sesuai nomor admin
+            $adminNumber = config('services.whatsapp.admin', '+620000000000'); // ganti sesuai nomor admin
             $this->twilio->sendWhatsApp($adminNumber, $transaction->getAdminMessage());
 
             // Tandai sebagai sudah dikirim

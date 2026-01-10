@@ -18,8 +18,8 @@ class TwilioController extends Controller
     public function sendTest()
     {
         // ganti nomor target sesuai format +62...
-        $to = '+6285346519151';
-        $body = 'Woy berhasil jir! wkwk gg lah';
+        $to = config('services.whatsapp.admin');
+        $body = 'Woy berhasil! wkwk mantap lah';
 
         $result = $this->twilio->sendWhatsApp($to, $body);
 
