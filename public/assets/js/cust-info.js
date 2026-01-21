@@ -15,13 +15,9 @@ const swiperTabs = new Swiper(".swiper", {
 
 const datesElement = document.querySelector(".select-dates");
 
-const startDate = new Date(2025, 8, 1);
+const startDate = new Date();
 
-const endDate = new Date(2026, 7, 31);
-
-// const startDate = new Date();
-
-// const endDate = new Date(2026, 11, 31);
+const endDate = new Date(2026, 11, 31);
 
 while (startDate <= endDate) {
     const day = startDate.getDate();
